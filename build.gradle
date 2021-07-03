@@ -22,7 +22,7 @@ apply plugin: 'com.github.johnrengelman.shadow'
 defaultTasks 'licenseFormat', 'check', 'build'
 
 // Basic project information
-group = 'org.spongepowered'
+group = 'dev.tigr.ares'
 archivesBaseName = 'mixin'
 version = buildVersion + (buildType == 'RELEASE' ? '' : "-$buildType")
 
@@ -216,9 +216,9 @@ processResources {
 // License header formatting
 license {
     ext {
-        name = project.name
-        organization = project.organization
-        url = project.url
+        name = 'Mixin'
+        organization = 'SpongePowered'
+        url = 'https://www.spongepowered.org'
     }
     include '**/*.java'
     header file("HEADER.txt")

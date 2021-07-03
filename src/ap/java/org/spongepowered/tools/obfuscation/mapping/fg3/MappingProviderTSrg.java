@@ -63,13 +63,18 @@ public class MappingProviderTSrg extends MappingProvider {
         
         String fromClass = null, toClass = null;
         this.inputMappings.addAll(Files.readLines(input, Charset.defaultCharset()));
-        
+
+        boolean first = true;
         for (String line : this.inputMappings) {
             if (Strings.isNullOrEmpty(line) || line.startsWith("#")) {
                 continue;
             }
             
             String[] parts = line.split(" ");
+            if(first && line.equals("tsrg2 left right")) {
+                first = false;
+                continue;
+            }
             if (line.startsWith("\t")) {
                 if (fromClass == null) {
                     throw new IllegalStateException("Error parsing TSRG file, found member declaration with no class: " + line);
